@@ -1,19 +1,17 @@
 <div class='jumbotron text-center'>
-	<h2>Peeps!</h2>
+	<h2>it yo friends</h2>
 	<div class='btn-group' role='group' aria-label='People Groups'>
 
-		<button type='button' class='btn btn-default'>All</button>
-		<button type='button' class='btn btn-default'>My Friends</button>
-		<button type='button' class='btn btn-default'>Requests</button>
-		<button type='button' class='btn btn-default'>Pending</button>
-
+		<%= link_to "Everyone", users_path, class: "btn btn-default #{'active' unless params[:people]}" %>
+		<%= link_to "My Friends", users_path(people: "friends"), class: "btn btn-default #{'active' if params[:people] == "friends"}" %>
+		<%= link_to "Friend Requests", users_path(people: "requests"), class: "btn btn-default #{'active' if params[:people] == "requests"}" %>
+		<%= link_to "Pending Requests", users_path(people: "pending"), class: "btn btn-default #{'active' if params[:people] == "pending"}" %>
 
 	</div>
-</div>
 
-
-	<div class='container'>
-		<div class='row'>
+	<div class="container">
+		<div class="row">
 			<%= render @users %>
 		</div>
-  </div>
+	</div>
+</div>
